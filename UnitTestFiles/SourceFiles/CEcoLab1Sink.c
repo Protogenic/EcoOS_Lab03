@@ -1,4 +1,4 @@
-﻿/*
+/*
  * <кодировка символов>
  *   Cyrillic (UTF-8 with signature) - Codepage 65001
  * </кодировка символов>
@@ -43,7 +43,6 @@ static void printArrayPreview(const void* pArray, int32_t size, ECO_COMB_SORT_TY
     int32_t limit = size < 10 ? size : 10;
     int32_t i = 0;
 
-    printf("Sorted preview: ");
     for (i = 0; i < limit; ++i) {
         switch (typeId) {
         case ECO_COMB_SORT_INT32:
@@ -67,7 +66,7 @@ static void printArrayPreview(const void* pArray, int32_t size, ECO_COMB_SORT_TY
         }
     }
     if (size > limit) {
-        printf("...");
+        printf("... (всего %d элементов)", size);
     }
     printf("\n");
 }
@@ -159,7 +158,7 @@ int16_t ECOCALLMETHOD CEcoLab1Sink_OnCombSortCall(/* in */ struct IEcoLab1Events
         return -1;
     }
 
-    printf("[Comb:%s] pass=%u gap=%d\n", combTypeToString(typeId), pass, gap);
+    printf("Проход #%u: gap=%d (тип: %s)\n", pass, gap, combTypeToString(typeId));
 
     return 0;
 }
@@ -175,7 +174,7 @@ int16_t ECOCALLMETHOD CEcoLab1Sink_OnCombSortSwap(/* in */ struct IEcoLab1Events
     }
 
     pCMe->m_iStep++;
-    printf("Step %u [%s]: swap %d <-> %d\n", pCMe->m_iStep, combTypeToString(typeId), indexSrc, indexDst);
+    printf("  -> Перестановка #%u: элементы [%d] и [%d] поменяны местами\n", pCMe->m_iStep, indexSrc, indexDst);
 
     return 0;
 }
@@ -188,9 +187,9 @@ int16_t ECOCALLMETHOD CEcoLab1Sink_OnCombSortCompleted(/* in */ struct IEcoLab1E
         return -1;
     }
 
-    printf("[Comb:%s] completed. Total elements: %d\n", combTypeToString(typeId), size);
+    printf("\nСортировка завершена! (тип: %s, элементов: %d)\n", combTypeToString(typeId), size);
+    printf("Первые элементы отсортированного массива: ");
     printArrayPreview(pArray, size, typeId);
-    printf("\n");
 
     return 0;
 }
