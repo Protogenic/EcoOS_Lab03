@@ -105,3 +105,5 @@ static void combSortHelperInt(CEcoLab1* pCMe, int* arr, int size) {
 ## Результат работы
 
 <img width="336" height="981" alt="image" src="https://github.com/user-attachments/assets/168edcb3-fbc4-4e8a-ac87-3d320bce2a36" />
+
+<img width="832" height="129" alt="image" src="https://github.com/user-attachments/assets/8b3160f7-7684-4530-bc58-b76b5bf4dd6f" />
