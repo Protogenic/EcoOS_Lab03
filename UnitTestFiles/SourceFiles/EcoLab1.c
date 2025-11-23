@@ -1,4 +1,4 @@
-﻿/*
+/*
  * <кодировка символов>
  *   Cyrillic (UTF-8 with signature) - Codepage 65001
  * </кодировка символов>
@@ -229,21 +229,21 @@ int16_t EcoMain(IEcoUnknown* pIUnk) {
         goto Release;
     }
 
-    printf("\n/// Comb sort event demo ///\n");
+    printf("\n========== Демонстрация работы Comb Sort ==========\n");
     {
-        int demoArray[] = { 12, -4, 7, 1, 9 };
+        int demoArray[] = { 64, 34, 25, 12, 22, 11, 90, 5 };
         int demoSize = sizeof(demoArray) / sizeof(demoArray[0]);
-        printf("Original: ");
+        printf("Исходный массив: ");
         for (i = 0; i < demoSize; ++i) {
             printf("%d ", demoArray[i]);
         }
-        printf("\nEvent trace:\n");
+        printf("\n\nПроцесс сортировки:\n");
         pIEcoLab1->pVTbl->combSortInt(pIEcoLab1, demoArray, demoSize);
-        printf("Sorted:   ");
+        printf("\nРезультат: ");
         for (i = 0; i < demoSize; ++i) {
             printf("%d ", demoArray[i]);
         }
-        printf("\n\n");
+        printf("\n================================================\n\n");
     }
 
     if (pICP != 0 && cAdvise != 0) {
